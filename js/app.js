@@ -13,6 +13,8 @@ class Usuario{
     }
 }
 
+let listaTipoProductos = ["productoTipoRemera","productoTipoShorts"]
+
 function login(){
     let usuarioLogueado = new Usuario(undefined,undefined);
     do {
@@ -63,4 +65,37 @@ function tablaTalle(peso,altura){
         talle = "XL"
     }
     return talle;
+}
+
+function ocultarTipoProducto(tipo){
+    let elemento = document.getElementsByClassName(tipo);
+    for(var i = 0; i < elemento.length; i++)
+    {
+        elemento[i].style.display = "none";
+    }
+}
+
+function verTipoProducto(tipo){
+    let elemento = document.getElementsByClassName(tipo);
+    for(var i = 0; i < elemento.length; i++)
+    {
+        elemento[i].style.display = "flex";
+    }
+}
+
+function filtroTipoProducto(tipo){
+    for(tipoProducto of listaTipoProductos){
+        if(tipoProducto === tipo){
+            verTipoProducto(tipo);
+        }else
+        {
+            if(tipo === "mostrarTodos"){
+                verTipoProducto(tipoProducto);
+            }else{
+                ocultarTipoProducto(tipoProducto);
+            }
+            
+        }
+    }
+   
 }

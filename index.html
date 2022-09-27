@@ -16,17 +16,27 @@
     <div id="usuario">
     </div>
     <button onclick="calcularTalle()">Calcular Talle</button>
+    <div>
+        <label for="radioFiltroTodos">Todos</label>
+        <input type="radio" name="filtro" id="radioFiltroTodos" value="Todos" onclick="filtroTipoProducto('mostrarTodos')" checked="true">  
+
+        <label for="radioFiltroRemeras">Remeras</label>
+        <input type="radio" name="filtro" id="radioFiltroRemeras" value="Remeras" onclick="filtroTipoProducto('productoTipoRemera')">
+
+        <label for="radioFiltroShorts">Shorts</label>
+        <input type="radio" name="filtro" id="radioFiltroShorts" value="Shorts" onclick="filtroTipoProducto('productoTipoShorts')">
+    </div>
 </header>
 
 <main>
 
     
     <section class="productos">
-        <div class="card p-2" style="width: 18rem;">
-            <img src="./imagenes/remeraAzul.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="itemProducto productoTipoRemera" >
+            <img src="./imagenes/remeraAzul.jpg" class="imgProducto" alt="...">
+            <div >
+                <h5>Card title</h5>
+                <p >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <form>
                     <select name="Talle">
                         <option value="S">S</option>
@@ -40,11 +50,11 @@
             </div>
         </div>
 
-        <div class="card p-2" style="width: 18rem;">
-            <img src="./imagenes/remeraNegra.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="itemProducto productoTipoRemera" >
+            <img src="./imagenes/remeraNegra.jpg" class="imgProducto" alt="...">
+            <div>
+                <h5>Card title</h5>
+                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <form>
                     <select name="Talle">
                         <option value="S">S</option>
@@ -57,12 +67,30 @@
                 </form> 
             </div>
         </div>
+
+        <div class="itemProducto productoTipoShorts">
+            <img src="./imagenes/shortVerde.jpg" class="imgProducto" alt="...">
+            <div>
+                <h5>Card title</h5>
+                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <form>
+                    <select name="Talle">
+                        <option value="S">S</option>
+                        <option value="M" selected>M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                    <input class="btn" type="number" name="" id="" min="0" max="12" value="0">
+                    <input class="btn btn-primary" type="button" value="Agregar">
+                </form>               
+            </div>
+        </div>
         
-        <div class="card p-2" style="width: 18rem;">
-            <img src="./imagenes/remeraRoja.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="itemProducto productoTipoRemera">
+            <img src="./imagenes/remeraRoja.jpg" class="imgProducto" alt="...">
+            <div>
+                <h5>Card title</h5>
+                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <form>
                     <select name="Talle">
                         <option value="S">S</option>
@@ -73,6 +101,24 @@
                     <input class="btn" type="number" name="" id="" min="0" max="12" value="0">
                     <input class="btn btn-primary" type="button" value="Agregar">
                 </form> 
+            </div>
+        </div>
+
+        <div class="itemProducto productoTipoShorts">
+            <img src="./imagenes/shortNegro.jpg" class="imgProducto" alt="...">
+            <div>
+                <h5>Card title</h5>
+                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <form>
+                    <select name="Talle">
+                        <option value="S">S</option>
+                        <option value="M" selected>M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                    <input class="btn" type="number" name="" id="" min="0" max="12" value="0">
+                    <input class="btn btn-primary" type="button" value="Agregar">
+                </form>               
             </div>
         </div>
        
