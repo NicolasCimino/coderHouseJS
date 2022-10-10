@@ -40,9 +40,27 @@
   padding: 20px;
 }
 
+header {
+  background-color: rgb(188, 202, 255);
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
 .imgProducto {
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
   height: 200px;
+}
+
+.imgIcon {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  height: 30px;
 }/*# sourceMappingURL=style.css.map */

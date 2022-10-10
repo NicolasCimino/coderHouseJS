@@ -6,118 +6,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-   <script src="./js/app.js" ></script>
+    <script defer src="./js/clases.js" ></script>
+    <script defer src="./js/funciones.js" ></script>  
+    <script defer src="./js/eventos.js" ></script>   
     <title>Carrito de compras</title>
 </head>
 <body>
     
 <header>
-    <button onclick="login()">Ingresar</button>
-    <div id="usuario">
-    </div>
-    <button onclick="calcularTalle()">Calcular Talle</button>
+    <button class="btn btn-primary" onclick="calcularTalle()">Calcular Talle</button>
     <div>
-        <label for="radioFiltroTodos">Todos</label>
+        <label>Filtrar: </label>
+       
         <input type="radio" name="filtro" id="radioFiltroTodos" value="Todos" onclick="filtroTipoProducto('mostrarTodos')" checked="true">  
-
-        <label for="radioFiltroRemeras">Remeras</label>
+        <label for="radioFiltroTodos">Todos</label>
+        
         <input type="radio" name="filtro" id="radioFiltroRemeras" value="Remeras" onclick="filtroTipoProducto('productoTipoRemera')">
-
-        <label for="radioFiltroShorts">Shorts</label>
+        <label for="radioFiltroRemeras">Remeras</label>
+        
         <input type="radio" name="filtro" id="radioFiltroShorts" value="Shorts" onclick="filtroTipoProducto('productoTipoShorts')">
+        <label for="radioFiltroShorts">Shorts</label>
+    </div>
+    
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carritoModal" onclick="mostrarCarrito('tablaCarrito')">
+        Carrito
+    </button>
+      
+      <!-- Modal -->
+    <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="carritoModalLabel">Carrito</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Talle</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">SubTotal</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tablaCarrito">                     
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" onclick="limpiarCarrito('tablaCarrito')">Limpiar</button>
+                    <a href="./Secciones/compra.html" target="_blank"><button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Comprar</button></a>
+                </div>
+            </div>
+        </div>
     </div>
 </header>
 
 <main>
 
-    
     <section class="productos">
-        <div class="itemProducto productoTipoRemera" >
-            <img src="./imagenes/remeraAzul.jpg" class="imgProducto" alt="...">
-            <div >
-                <h5>Card title</h5>
-                <p >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <form>
-                    <select name="Talle">
-                        <option value="S">S</option>
-                        <option value="M" selected>M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                    </select>
-                    <input class="btn" type="number" name="" id="" min="0" max="12" value="0">
-                    <input class="btn btn-primary" type="button" value="Agregar">
-                </form>               
-            </div>
-        </div>
-
+       
         <div class="itemProducto productoTipoRemera" >
             <img src="./imagenes/remeraNegra.jpg" class="imgProducto" alt="...">
-            <div>
-                <h5>Card title</h5>
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <form>
-                    <select name="Talle">
+            <div class="mt-2">
+                <h5>Remera Negra</h5>
+                <form class="mt-2">
+                    <select name="Talle" id="talle1">
                         <option value="S">S</option>
                         <option value="M" selected>M</option>
                         <option value="L">L</option>
                         <option value="XL">XL</option>
                     </select>
-                    <input class="btn" type="number" name="" id="" min="0" max="12" value="0">
-                    <input class="btn btn-primary" type="button" value="Agregar">
+                    <input class="btn" type="number" id="cantidad1" min="0" max="12" value="0">
+                    <button class="btn btn-primary" type="button" id="btnCargar1">Agregar</button>
                 </form> 
             </div>
         </div>
 
         <div class="itemProducto productoTipoShorts">
             <img src="./imagenes/shortVerde.jpg" class="imgProducto" alt="...">
-            <div>
-                <h5>Card title</h5>
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <form>
-                    <select name="Talle">
+            <div class="mt-2">
+                <h5>Short Verde</h5>
+                <form class="mt-2">
+                    <select name="Talle" id="talle2">
                         <option value="S">S</option>
                         <option value="M" selected>M</option>
                         <option value="L">L</option>
                         <option value="XL">XL</option>
                     </select>
-                    <input class="btn" type="number" name="" id="" min="0" max="12" value="0">
-                    <input class="btn btn-primary" type="button" value="Agregar">
+                    <input class="btn" type="number" id="cantidad2" min="0" max="12" value="0">
+                    <button class="btn btn-primary" type="submit" id ="btnCargar2">Agregar</button>
                 </form>               
             </div>
         </div>
         
         <div class="itemProducto productoTipoRemera">
             <img src="./imagenes/remeraRoja.jpg" class="imgProducto" alt="...">
-            <div>
-                <h5>Card title</h5>
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <form>
-                    <select name="Talle">
+            <div class="mt-2">
+                <h5>Remera Roja</h5>
+                <form class="mt-2">
+                    <select name="Talle" id="talle3">
                         <option value="S">S</option>
                         <option value="M" selected>M</option>
                         <option value="L">L</option>
                         <option value="XL">XL</option>
                     </select>
-                    <input class="btn" type="number" name="" id="" min="0" max="12" value="0">
-                    <input class="btn btn-primary" type="button" value="Agregar">
+                    <input class="btn" type="number" id="cantidad3" min="0" max="12" value="0">
+                    <button class="btn btn-primary" type="submit" id ="btnCargar3">Agregar</button>
                 </form> 
             </div>
         </div>
 
         <div class="itemProducto productoTipoShorts">
             <img src="./imagenes/shortNegro.jpg" class="imgProducto" alt="...">
-            <div>
-                <h5>Card title</h5>
-                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <form>
-                    <select name="Talle">
+            <div class="mt-2">
+                <h5>Short Negro</h5>
+                <form class="mt-2">
+                    <select name="Talle" id="talle4">
                         <option value="S">S</option>
                         <option value="M" selected>M</option>
                         <option value="L">L</option>
                         <option value="XL">XL</option>
                     </select>
-                    <input class="btn" type="number" name="" id="" min="0" max="12" value="0">
-                    <input class="btn btn-primary" type="button" value="Agregar">
+                    <input class="btn" type="number" id="cantidad4" min="0" max="12" value="0">
+                    <button class="btn btn-primary" type="submit" id ="btnCargar4">Agregar</button>
+                </form>               
+            </div>
+        </div>
+
+        <div class="itemProducto productoTipoRemera" >
+            <img src="./imagenes/remeraAzul.jpg" class="imgProducto" alt="...">
+            <div class="mt-2">
+                <h5>Remera Azul</h5>
+                <form class="mt-2">
+                    <select name="Talle" id="talle5">
+                        <option value="S">S</option>
+                        <option value="M" selected>M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                    <input class="btn" type="number" id="cantidad5" min="0" max="12" value="0">
+                    <button class="btn btn-primary" type="submit" id ="btnCargar5">Agregar</button>
                 </form>               
             </div>
         </div>
@@ -131,4 +165,5 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
+
 </html>
