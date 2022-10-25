@@ -3,6 +3,8 @@ let btnCargar2 = document.getElementById("btnCargar2");
 let btnCargar3 = document.getElementById("btnCargar3");
 let btnCargar4 = document.getElementById("btnCargar4");
 let btnCargar5 = document.getElementById("btnCargar5");
+let btnCargar6 = document.getElementById("btnCargar6");
+let btnCargar7 = document.getElementById("btnCargar7");
 
 btnCargar1.addEventListener("click", (evento)=>
 {
@@ -90,6 +92,42 @@ btnCargar5.addEventListener("click", (evento)=>
         else{
             cargarItem("5",document.getElementById("talle5").value,cantidad);
             document.getElementById("cantidad5").value = 0;
+        }       
+    } 
+})
+
+btnCargar6.addEventListener("click", (evento)=>
+{
+    evento.preventDefault();
+    let cantidad = document.getElementById("cantidad6").value
+    if(cantidad <1){
+    alert("Cantidad no puede ser 0");
+    }
+    else{
+        if(cantidad > 12){
+            alert("Cantidad no puede ser mayor que 12");
+        }
+        else{
+            cargarItem("6",document.getElementById("talle6").value,cantidad);
+            document.getElementById("cantidad6").value = 0;
+        }       
+    } 
+})
+
+btnCargar6.addEventListener("click", (evento)=>
+{
+    evento.preventDefault();
+    let cantidad = document.getElementById("cantidad7").value
+    if(cantidad <1){
+    alert("Cantidad no puede ser 0");
+    }
+    else{
+        if(cantidad > 12){
+            alert("Cantidad no puede ser mayor que 12");
+        }
+        else{
+            cargarItem("7",document.getElementById("talle7").value,cantidad);
+            document.getElementById("cantidad7").value = 0;
         }       
     } 
 })

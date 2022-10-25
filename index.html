@@ -26,6 +26,9 @@
         
         <input type="radio" name="filtro" id="radioFiltroShorts" value="Shorts" onclick="filtroTipoProducto('productoTipoShorts')">
         <label for="radioFiltroShorts">Shorts</label>
+
+        <input type="radio" name="filtro" id="radioFiltroShorts" value="medias" onclick="filtroTipoProducto('productoTipoMedias')">
+        <label for="radioFiltroShorts">Medias</label>
     </div>
     
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carritoModal" onclick="mostrarCarrito('tablaCarrito')">
@@ -51,6 +54,7 @@
                             <th scope="col">Talle</th>
                             <th scope="col">Precio</th>
                             <th scope="col">SubTotal</th>
+                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody id="tablaCarrito">                     
@@ -152,6 +156,34 @@
                     </select>
                     <input class="btn" type="number" id="cantidad5" min="0" max="12" value="0">
                     <button class="btn btn-primary" type="submit" id ="btnCargar5">Agregar</button>
+                </form>               
+            </div>
+        </div>
+
+        <div class="itemProducto productoTipoMedias" >
+            <img src="./imagenes/mediasCortas.jpg" class="imgProducto" alt="...">
+            <div class="mt-2">
+                <h5>Medias Cortas</h5>
+                <form class="mt-2">
+                    <select name="Talle" id="talle6">
+                        <option value="Único" selected>Único</option>
+                    </select>
+                    <input class="btn" type="number" id="cantidad6" min="0" max="12" value="0">
+                    <button class="btn btn-primary" type="submit" id ="btnCargar6">Agregar</button>
+                </form>               
+            </div>
+        </div>
+
+        <div class="itemProducto productoTipoMedias" >
+            <img src="./imagenes/mediasLargas.jpg" class="imgProducto" alt="...">
+            <div class="mt-2">
+                <h5>Medias Largas</h5>
+                <form class="mt-2">
+                    <select name="Talle" id="talle7">
+                        <option value="Único" selected>Único</option>
+                    </select>
+                    <input class="btn" type="number" id="cantidad6" min="0" max="12" value="0">
+                    <button class="btn btn-primary" type="submit" id ="btnCargar7">Agregar</button>
                 </form>               
             </div>
         </div>

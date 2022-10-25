@@ -1,13 +1,22 @@
 
 function cargarItem(codProducto,talle,cantidad){
-   
     let unItem = new Item(listaProductos.find(producto => producto.codProd == codProducto),talle, cantidad);
-    miCarrito.agregarItem(unItem);
+    miCarrito.items.push(unItem);
+    localStorage.setItem("carrito",(JSON.stringify(miCarrito)));
 }
 
 function limpiarCarrito(id){
-    miCarrito.limpiarCarrito();
+    miCarrito.items = [];
     mostrarCarrito(id.toString());
+    localStorage.setItem("carrito",(JSON.stringify(miCarrito)));
+}
+
+function quitarItemCarrito(cod,talle,cantidad){
+    miCarrito.items = miCarrito.items.filter((item)=>
+        (item.producto.codProd != cod || item.talle != talle || item.cantidad != cantidad)
+    )
+    localStorage.setItem("carrito",(JSON.stringify(miCarrito)));
+    mostrarCarrito('tablaCarrito');
 }
 
 
@@ -24,6 +33,7 @@ function mostrarCarrito(id){
                         <td>${element.talle}</td>
                         <td>${element.producto.precio}</td>
                         <td>${element.producto.precio * element.cantidad}</td>
+                        <td><button type="submit" class="btn btn-danger" onclick="quitarItemCarrito(${element.producto.codProd},'${element.talle}',${element.cantidad})">x</button></td>
                       </tr>`
     Total+= element.producto.precio * element.cantidad;
     });
@@ -35,6 +45,7 @@ function mostrarCarrito(id){
                         <td></td>
                         <td><strong>TOTAL</strong></td>
                         <td><strong>${Total}</strong></td>
+                        <td></td>
                     </tr>`
  }
 
@@ -73,6 +84,9 @@ function tablaTalle(peso,altura){
 
 
 /**** Filtro **************/
+
+
+// armo un array con elementos hmtl de una clase, para recorrerlo y ocultar cada elemento
 function ocultarTipoProducto(tipo){
     let elemento = document.getElementsByClassName(tipo);
     for(var i = 0; i < elemento.length; i++)
@@ -80,7 +94,7 @@ function ocultarTipoProducto(tipo){
         elemento[i].style.display = "none";
     }
 }
-
+// armo un array con elementos hmtl de una clase, para recorrerlo y dejarlos visibles con display flex
 function verTipoProducto(tipo){
     let elemento = document.getElementsByClassName(tipo);
     for(var i = 0; i < elemento.length; i++)
@@ -89,20 +103,15 @@ function verTipoProducto(tipo){
     }
 }
 
+// recorro la lista de tipo de productos y verico si ese tipo debe ser mostrado u ocultado
 function filtroTipoProducto(tipo){
     for(tipoProducto of listaTipoProductos){
-        if(tipoProducto === tipo){
-            verTipoProducto(tipo);
+        if(tipoProducto === tipo || tipo === "mostrarTodos"){
+            verTipoProducto(tipoProducto);
         }else
         {
-            if(tipo === "mostrarTodos"){
-                verTipoProducto(tipoProducto);
-            }else{
                 ocultarTipoProducto(tipoProducto);
-            }
-            
         }
     }
-   
 }
 

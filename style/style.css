@@ -40,6 +40,13 @@
   padding: 20px;
 }
 
+.productoTipoMedias {
+  display: flex;
+  align-items: center;
+  width: 320px;
+  padding: 20px;
+}
+
 header {
   background-color: rgb(188, 202, 255);
   padding: 20px;
