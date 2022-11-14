@@ -8,34 +8,43 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script defer src="./js/clases.js" ></script>
     <script defer src="./js/funciones.js" ></script>  
-    <script defer src="./js/eventos.js" ></script>   
+    <script defer src="./js/eventos.js" ></script> 
+    <script defer src="./js/fetch.js" ></script>   
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <title>Carrito de compras</title>
 </head>
 <body>
     
 <header>
-    <button class="btn btn-primary" onclick="calcularTalle()">Calcular Talle</button>
-    <div>
-        <label>Filtrar: </label>
-       
-        <input type="radio" name="filtro" id="radioFiltroTodos" value="Todos" onclick="filtroTipoProducto('mostrarTodos')" checked="true">  
-        <label for="radioFiltroTodos">Todos</label>
-        
-        <input type="radio" name="filtro" id="radioFiltroRemeras" value="Remeras" onclick="filtroTipoProducto('productoTipoRemera')">
-        <label for="radioFiltroRemeras">Remeras</label>
-        
-        <input type="radio" name="filtro" id="radioFiltroShorts" value="Shorts" onclick="filtroTipoProducto('productoTipoShorts')">
-        <label for="radioFiltroShorts">Shorts</label>
 
-        <input type="radio" name="filtro" id="radioFiltroShorts" value="medias" onclick="filtroTipoProducto('productoTipoMedias')">
-        <label for="radioFiltroShorts">Medias</label>
+    <div id="cotizaciones">
+
+    </div>
+    <div class="headerMenu">
+        <button class="btn btn-primary" onclick="calcularTalle()">Calcular Talle</button>
+        <div>
+            <label>Filtrar: </label>
+           
+            <input type="radio" name="filtro" id="radioFiltroTodos" value="Todos" onclick="filtroTipoProducto('mostrarTodos')" checked="true">  
+            <label for="radioFiltroTodos">Todos</label>
+            
+            <input type="radio" name="filtro" id="radioFiltroRemeras" value="Remeras" onclick="filtroTipoProducto('productoTipoRemera')">
+            <label for="radioFiltroRemeras">Remeras</label>
+            
+            <input type="radio" name="filtro" id="radioFiltroShorts" value="Shorts" onclick="filtroTipoProducto('productoTipoShorts')">
+            <label for="radioFiltroShorts">Shorts</label>
+    
+            <input type="radio" name="filtro" id="radioFiltroShorts" value="medias" onclick="filtroTipoProducto('productoTipoMedias')">
+            <label for="radioFiltroShorts">Medias</label>
+        </div>
+        
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carritoModal" onclick="mostrarCarrito('tablaCarrito')">
+            Carrito
+        </button>
     </div>
     
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carritoModal" onclick="mostrarCarrito('tablaCarrito')">
-        Carrito
-    </button>
-      
-      <!-- Modal -->
     <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -63,8 +72,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary" onclick="limpiarCarrito('tablaCarrito')">Limpiar</button>
-                    <a href="./Secciones/compra.html" target="_blank"><button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Comprar</button></a>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarCarrito('tablaCarrito')">Limpiar</button>
+                    <a href="./Secciones/compra.html" target="_blank"><button id="btnComprar" type="button" class="btn btn-primary btnComprar" data-bs-dismiss="modal" >Comprar</button></a>
                 </div>
             </div>
         </div>
@@ -86,7 +95,7 @@
                         <option value="L">L</option>
                         <option value="XL">XL</option>
                     </select>
-                    <input class="btn" type="number" id="cantidad1" min="0" max="12" value="0">
+                    <input class="btn" type="number" id="cantidad1" min="1" max="12" value="1">
                     <button class="btn btn-primary" type="button" id="btnCargar1">Agregar</button>
                 </form> 
             </div>
@@ -103,7 +112,7 @@
                         <option value="L">L</option>
                         <option value="XL">XL</option>
                     </select>
-                    <input class="btn" type="number" id="cantidad2" min="0" max="12" value="0">
+                    <input class="btn" type="number" id="cantidad2" min="1" max="12" value="1">
                     <button class="btn btn-primary" type="submit" id ="btnCargar2">Agregar</button>
                 </form>               
             </div>
@@ -120,7 +129,7 @@
                         <option value="L">L</option>
                         <option value="XL">XL</option>
                     </select>
-                    <input class="btn" type="number" id="cantidad3" min="0" max="12" value="0">
+                    <input class="btn" type="number" id="cantidad3"min="1" max="12" value="1">
                     <button class="btn btn-primary" type="submit" id ="btnCargar3">Agregar</button>
                 </form> 
             </div>
@@ -137,7 +146,7 @@
                         <option value="L">L</option>
                         <option value="XL">XL</option>
                     </select>
-                    <input class="btn" type="number" id="cantidad4" min="0" max="12" value="0">
+                    <input class="btn" type="number" id="cantidad4" min="1" max="12" value="1">
                     <button class="btn btn-primary" type="submit" id ="btnCargar4">Agregar</button>
                 </form>               
             </div>
@@ -154,7 +163,7 @@
                         <option value="L">L</option>
                         <option value="XL">XL</option>
                     </select>
-                    <input class="btn" type="number" id="cantidad5" min="0" max="12" value="0">
+                    <input class="btn" type="number" id="cantidad5" min="1" max="12" value="1">
                     <button class="btn btn-primary" type="submit" id ="btnCargar5">Agregar</button>
                 </form>               
             </div>
@@ -168,7 +177,7 @@
                     <select name="Talle" id="talle6">
                         <option value="Único" selected>Único</option>
                     </select>
-                    <input class="btn" type="number" id="cantidad6" min="0" max="12" value="0">
+                    <input class="btn" type="number" id="cantidad6" min="1" max="12" value="1">
                     <button class="btn btn-primary" type="submit" id ="btnCargar6">Agregar</button>
                 </form>               
             </div>
@@ -182,7 +191,7 @@
                     <select name="Talle" id="talle7">
                         <option value="Único" selected>Único</option>
                     </select>
-                    <input class="btn" type="number" id="cantidad6" min="0" max="12" value="0">
+                    <input class="btn" type="number" id="cantidad6" min="1" max="12" value="1">
                     <button class="btn btn-primary" type="submit" id ="btnCargar7">Agregar</button>
                 </form>               
             </div>

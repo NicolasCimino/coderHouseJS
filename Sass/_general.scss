@@ -2,10 +2,8 @@ header{
     background-color: rgb(188, 202, 255);
     padding: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
     gap: 20px;
 }
 
@@ -17,4 +15,33 @@ header{
 .imgIcon{
     width: min-content;
     height:30px;
+}
+
+.Cotizaciones{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: left;
+    align-items: baseline;
+    width: 100%;
+}
+
+.headerMenu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#btnComprar{
+    visibility: hidden;
+}
+
+.resumenCompra{
+    background-color: rgb(231, 236, 234);
+}
+
+.bg-compra{
+    background-color: rgb(199, 199, 255);
 }

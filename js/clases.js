@@ -26,14 +26,21 @@ class Item{
     }
 }
 
-class Carrito{
-    items = [];
+class cotizacion{
+    compra = 0;
+    venta = 0;
 }
 
-let miCarrito = new Carrito();
-if(JSON.parse(localStorage.getItem('carrito')))
-{
+
+let miCarrito = [];
+
+/// si existe un carrito en el localStorage lo cargo en miCarrito
+/// caso contrario el carrito queda vacio
+if(localStorage.getItem('carrito')?.length > 0)
+{   
     miCarrito = JSON.parse(localStorage.getItem('carrito'));
+    document.getElementById("btnComprar").style.visibility = "visible" ;
+   
 }
 
 
