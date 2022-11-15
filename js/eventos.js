@@ -120,6 +120,7 @@ btnCargar5.addEventListener("click", (evento)=>
 btnCargar6.addEventListener("click", (evento)=>
 {
     evento.preventDefault();
+    let cantidad = document.getElementById("cantidad6").value
     if(cantidad <1){
         swal("Cantidad no puede ser 0",{
             icon: "error",   
@@ -138,7 +139,7 @@ btnCargar6.addEventListener("click", (evento)=>
     } 
 })
 
-btnCargar6.addEventListener("click", (evento)=>
+btnCargar7.addEventListener("click", (evento)=>
 {
     evento.preventDefault();
     let cantidad = document.getElementById("cantidad7").value

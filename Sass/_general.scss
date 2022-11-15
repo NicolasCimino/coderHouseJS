@@ -36,6 +36,7 @@ header{
 
 #btnComprar{
     visibility: hidden;
+    
 }
 
 .resumenCompra{
@@ -44,4 +45,13 @@ header{
 
 .bg-compra{
     background-color: rgb(199, 199, 255);
+}
+
+button a{
+    text-decoration: none;
+    color: white;
+}
+
+button a:hover{
+    color: white;
 }
